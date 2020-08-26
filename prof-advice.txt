@@ -1,0 +1,160 @@
+Hi Class,
+
+I wanted to remind everyone that the final project will be written in C++. Now before you all freakout it is not a program written from scratch you are just modifying and adding to existing code, and half of the code is given to you, and I will be available to answer any questions, and provide hints. :) I know some are probably saying right now "I have no experience with C++, can I write it in java instead, what am I going to do?" First, it is a school requirement that the final program be written in C++ for the purpose of learning how languages are similar and different. But, I took the liberty to find a number of resources to make that journey less painful, which are all listed below:
+
+https://www.youtube.com/playlist?list=PL82YdDfxhWsCyZLsg_kXhH8sy5ixQNras
+
+https://www.youtube.com/playlist?list=PLGLfVvz_LVvQ9S8YSV0iDsuEU8v11yP9M
+
+There are tons of other videos as well. Also if you don't have a C++ compiler I recommend Visual Studio 2017 it is free off of the Microsoft site. Please do not wait last minute too install  the software. I have seen many students run into issues with these various compilers.
+
+Also you can take a look at "A Tour of C++" by the creator of the language Bjarne Stroustrup."
+
+https://stackoverflow.com/questions/388242/the-definitive-c-book-guide-and-list
+
+I will post this information again in the last week, but for anyone that wanted to get a head-start, here you go :)
+
+FYI: You are allowed to modify the program, as you see fit, have fun with it. :)
+
+If you have any questions, please feel free to message me.
+
+Take care,
+
+Dr. Waithe
+
+
+
+Hi Class,
+
+For anyone who wanted to get started on Project 2, I wanted to post some helpful information to get you started. I will post this information again in week 8.
+
+Your test plan and test file, and output should be similar to the following:
+
+Test File
+
+( a > 8 ) , a = 8 ;
+( b > 8 ) , b = 7 ;
+( c > 8 ) , c = 9 ;
+( d < 5 ) , d = 5 ;
+( e < 5 ) , e = 4 ;
+( f < 5 ) , f = 6 ;
+( g ! ) , g = 0 ;
+( h ! ) , h = 1 ;
+( i ! ) , i = 9 ;
+( j & 7 ) , j = 0 ;
+( k & 7 ) , k = 2 ;
+( 0 | l ) , l = 0 ;
+( 0 | m ) , m = 3 ;
+( 1 | n ) , n = 3 ;
+( o * 8 ) , o = 0 ;
+( p * 8 ) , p = 8 ;
+( q / 2 ) , q = 4 ;
+( r / 2 ) , r = 2 ;
+( 90 + s ) , s = 4 ;
+( 90 + t ) , t = 2 ;
+( 9 - u ), u = 3 ;
+( 9 - v ), v = 5 ;
+( 10 : 0 ? ( w & 3 ) ) , w = 3 ;
+( 10 : 0 ? ( x & 3 ) ) , x = 0 ;
+( 10 : 0 ? ( y & 0 ) ) , y = 0 ;
+( ( ( z < ( 90 + aa ) ) & ( bb ! ) ) * ( ( 7 / cc ) | ( 1 : 0 ? ( z > aa ) ) , z = 8 , aa = 2 , bb = 8 , cc = 2 ;
+( ( dd < ( 0 + ee ) ) : ( ff ! ) ? ( ( 7 - gg ) | ( 1 : 0 ? ( gg > dd ) ) , dd = 1 , ee = 3 , ff = 10 , gg = 7 ;
+
+Your test plan should be similar to the following:
+
+wewe
+
+Your output should be similar to the following:
+
+weew
+
+If you need a refresher on C++ programming the link below should help, it start you from the beginning and moves you forward. Please let me know if it helps. In addition, there are tons of other videos as well. Also if you don't have a C++ compiler I recommend Visual Studio 2017 it is free off of the Microsoft site.
+
+You are allowed to modify the program, as you see fit, have fun with it :). Just make sure to address all criteria in the Rubric so that you get all your points. Don't forget to include the test cases that test all of the required operators. Each test case should include the expression and its expected value. I'm more concerned with the end result, every programmer writes differently, and will approach the criteria differently.
+
+https://www.youtube.com/playlist?list=PL82YdDfxhWsCyZLsg_kXhH8sy5ixQNras
+
+Now coding, the base code is located in the following location, if your having problems locating it.
+
+Content -> Week 5 -> Module Readings -> An Expression Interpreter
+
+Now you should extend the program so that it supports relational, logical and conditional expression operators as defined by the following extension to the grammar:
+<exp> -> '(' <operand> <op> <operand> ')' |
+'(' <operand> ':' <operand> '?' <operand> ')' |
+'(' <operand> '!' ')'
+<op> -> '+' | '-' | '*' | '/' | '>' | '<' | '=' | '&' | '|'
+Note that there are a few differences in the use of these operators compared to their customary use in the C family of languages. Their differences are:
+In the conditional expression operator, the symbols are reversed and the third operand represents the condition. The first operand is the value when true and the second the value when false
+The logical operators use single symbols not double, for example the and operator is & not &&
+The negation operator ! is a postfix operator, not a prefix one
+There are only three relational operators not the usual six and the operator for equality is = not ==
+
+HINT: For example class divide would look similar to the following:
+
+class Divide : public SubExpression
+{
+public:
+Divide(Expression* left, Expression* right) :
+SubExpression(left, right)
+{
+}
+int evaluate()
+{
+return left->evaluate() / right->evaluate();
+}
+};
+
+Class GreaterThan would be similar to the following:
+
+class GreaterThan : public SubExpression
+{
+public:
+GreaterThan(Expression* left, Expression* right) :
+SubExpression(left, right)
+{
+}
+int evaluate()
+{
+if (left->evaluate() <= right->evaluate()) {
+return 0;
+}
+else {
+return 1;
+}
+}
+};
+
+Hint: The subexpression class should potentially  resemble the following:
+
+class SubExpression : public Expression
+{
+public:
+SubExpression(Expression* left);
+SubExpression(Expression* left, Expression* right);
+SubExpression(Expression* left, Expression* right, Expression* condition);
+static Expression* parse(istringstream& token);
+protected:
+Expression* left;
+Expression* right;
+Expression* condition;
+};
+
+Please let me know if you have any further questions concerning the project.
+
+Dr. Waithe
+
+
+
+The grammar for the language that this interpreter accepts is defined by the following grammar:
+
+<program> → <exp> , <assigns> ;
+<exp> → ( <operand> <op> <operand> )
+<operand> → <literal> | <variable> | <exp>
+<assigns> → <assigns> , <assign> | <assign>
+<assign> → <variable> = <literal>
+<op> -> '+' | '-' | '*' | '/' | '>' | '<' | '=' | '&' | '|'
+
+The regular expressions defining the three tokens are the following:
+<op>		    [+-*/]
+<variable>	[a-zA-Z][a-zA-Z0-9]*
+<literal>	  [0-9]+

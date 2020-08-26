@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+#include "expression.h"
+#include "subexpression.h"
+#include "operand.h"
+#include "condition.h"
+
+Condition::Condition(Expression* left, Expression* right) : SubExpression(left, right) {
+
+}
+
+double Condition::evaluate() {
+  Expression* boolExpr;
+  char operation, paren;
+
+  //I think that any i/o ops need to be done in subexpression class, instead. May be the problem
+  cin >> operation;
+  boolExpr = Operand::parse();
+  cin >> paren;
+
+  double x = boolExpr->evaluate();
+  double y = left->evaluate();
+  double z = right->evaluate();
+  cout << "left: " << y << endl;
+  cout << "right: " << z << endl;
+  cout << "operation: " << operation << endl;
+  cout << "paren: " << paren << endl;
+  cout << "boolexpr: " << x << endl;
+  //if the evaulate()s here invoked this function, I would see the above T/S output more than once. so what evaluate is being invoked?
+
+  //if(boolExpr->evaluate() == 0) return right->evaluate();
+  //else return left->evaluate();
+
+  if(x == 0) return z;
+  else return y;
+}
